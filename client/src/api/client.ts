@@ -1,0 +1,13 @@
+import axios from 'axios';
+
+export const apiClient = axios.create({
+    baseURL: import.meta.env.VITE_API_BASE_URL ?? '/api',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+});
+
+export function isLiveApiEnabled(): boolean {
+    return localStorage.getItem('service_mode') === 'live';
+}
