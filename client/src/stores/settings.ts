@@ -1,14 +1,27 @@
 import { defineStore } from 'pinia';
-import type { ApiMode } from '@/api/types';
+import type { ApiMode, ServiceModes, ServiceType } from '@/api/types';
+
+const services: ServiceType[] = ['auth', 'events', 'reservations', 'payments'];
+
+function loadServiceModes(): ServiceModes {
+    return services.reduce((modes, service) => {
+        modes[service] = (localStorage.getItem(`service_mode_${service}`) as ApiMode | null) ?? 'mock';
+        return modes;
+    }, {} as ServiceModes);
+}
 
 export const useSettingsStore = defineStore('settings', {
     state: () => ({
-        serviceMode: (localStorage.getItem('service_mode') as ApiMode | null) ?? 'mock',
+        services,
+        serviceModes: loadServiceModes(),
     }),
+    getters: {
+        liveServiceCount: (state) => Object.values(state.serviceModes).filter((mode) => mode === 'live').length,
+    },
     actions: {
-        setServiceMode(mode: ApiMode) {
-            this.serviceMode = mode;
-            localStorage.setItem('service_mode', mode);
+        setServiceMode(service: ServiceType, mode: ApiMode) {
+            this.serviceModes[service] = mode;
+            localStorage.setItem(`service_mode_${service}`, mode);
         },
     },
 });

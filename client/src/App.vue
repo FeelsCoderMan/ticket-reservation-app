@@ -2,10 +2,8 @@
 import { RouterLink, RouterView } from 'vue-router';
 import { CalendarDays, LayoutDashboard, LogOut, ReceiptText, Ticket } from '@lucide/vue';
 import { useAuthStore } from '@/stores/auth';
-import { useSettingsStore } from '@/stores/settings';
 
 const auth = useAuthStore();
-const settings = useSettingsStore();
 </script>
 
 <template>
@@ -23,7 +21,6 @@ const settings = useSettingsStore();
             </nav>
 
             <div class="account">
-                <span class="mode-pill">{{ settings.serviceMode }}</span>
                 <template v-if="auth.user">
                     <span>{{ auth.user.name }}</span>
                     <button class="icon-button" type="button" title="Log out" @click="auth.logout">

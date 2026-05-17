@@ -1,4 +1,6 @@
 export type ApiMode = 'mock' | 'live';
+export type ServiceType = 'auth' | 'events' | 'reservations' | 'payments';
+export type ServiceModes = Record<ServiceType, ApiMode>;
 
 export interface TicketCategory {
     id: string;

@@ -3,7 +3,7 @@ import { mockEvents, mockSeats } from './mockData';
 import type { EventSummary, Seat } from './types';
 
 export async function listEvents(): Promise<EventSummary[]> {
-    if (isLiveApiEnabled()) {
+    if (isLiveApiEnabled('events')) {
         const { data } = await apiClient.get<EventSummary[]>('/events');
         return data;
     }
@@ -12,7 +12,7 @@ export async function listEvents(): Promise<EventSummary[]> {
 }
 
 export async function getEvent(eventId: string): Promise<EventSummary | undefined> {
-    if (isLiveApiEnabled()) {
+    if (isLiveApiEnabled('events')) {
         const { data } = await apiClient.get<EventSummary>(`/events/${eventId}`);
         return data;
     }
@@ -21,7 +21,7 @@ export async function getEvent(eventId: string): Promise<EventSummary | undefine
 }
 
 export async function listSeats(eventId: string): Promise<Seat[]> {
-    if (isLiveApiEnabled()) {
+    if (isLiveApiEnabled('events')) {
         const { data } = await apiClient.get<Seat[]>(`/events/${eventId}/seats`);
         return data;
     }

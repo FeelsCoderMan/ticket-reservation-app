@@ -10,7 +10,7 @@ const seatPrice = (seat: Seat) => {
 export async function createReservation(eventId: string, selectedSeats: Seat[]): Promise<Reservation> {
     const seatIds = selectedSeats.map((seat) => seat.id);
 
-    if (isLiveApiEnabled()) {
+    if (isLiveApiEnabled('reservations')) {
         const { data } = await apiClient.post<Reservation>('/reservations', { eventId, seatIds });
         return data;
     }

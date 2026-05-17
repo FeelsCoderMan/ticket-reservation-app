@@ -3,7 +3,7 @@ import { mockOrders } from './mockData';
 import type { Order, Reservation } from './types';
 
 export async function listOrders(): Promise<Order[]> {
-    if (isLiveApiEnabled()) {
+    if (isLiveApiEnabled('payments')) {
         const { data } = await apiClient.get<Order[]>('/orders');
         return data;
     }
@@ -12,7 +12,7 @@ export async function listOrders(): Promise<Order[]> {
 }
 
 export async function payReservation(reservation: Reservation, eventTitle: string): Promise<Order> {
-    if (isLiveApiEnabled()) {
+    if (isLiveApiEnabled('payments')) {
         const { data } = await apiClient.post<Order>('/payments', { reservationId: reservation.id });
         return data;
     }
