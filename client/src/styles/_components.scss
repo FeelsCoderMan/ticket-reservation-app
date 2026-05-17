@@ -61,6 +61,18 @@
     font-weight: 700;
     padding: rem-calc(5px) rem-calc(10px);
     text-transform: capitalize;
+
+    &.status-paid {
+        background: #e9f7f1;
+        border: 1px solid #bfe6d1;
+        color: #17643b;
+    }
+
+    &.status-pending {
+        background: #fff3e0;
+        border: 1px solid #f7c980;
+        color: #d97a00;
+    }
 }
 
 .search-box {

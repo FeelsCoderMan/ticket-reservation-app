@@ -19,8 +19,10 @@ onMounted(() => ordersStore.loadOrders());
         <div v-for="order in ordersStore.orders" :key="order.id" class="order-row">
             <strong>{{ order.eventTitle }}</strong>
             <span>{{ order.seats.join(', ') }}</span>
-            <span>₺{{ order.total.toLocaleString('tr-TR') }}</span>
-            <span class="status">{{ order.status }}</span>
+            <div class="payment-details">
+                <span>₺{{ order.total.toLocaleString('tr-TR') }}</span>
+                <span class="status" :class="`status-${order.status}`">{{ order.status }}</span>
+            </div>
         </div>
     </section>
 </template>
