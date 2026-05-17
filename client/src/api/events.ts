@@ -1,5 +1,5 @@
 import { apiClient, isLiveApiEnabled } from './client';
-import { mockEvents, mockSeats } from './mockData';
+import { mockEvents, mockSeats } from './mock/events';
 import type { EventSummary, Seat } from './types';
 
 export async function listEvents(): Promise<EventSummary[]> {

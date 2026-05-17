@@ -1,5 +1,5 @@
 import { apiClient, isLiveApiEnabled } from './client';
-import { mockOrders } from './mockData';
+import { getMockPayReservation, mockOrders } from './mock/payments';
 import type { Order, Reservation } from './types';
 
 export async function listOrders(): Promise<Order[]> {
@@ -17,12 +17,5 @@ export async function payReservation(reservation: Reservation, eventTitle: strin
         return data;
     }
 
-    return {
-        id: `ord-${Date.now()}`,
-        eventTitle,
-        eventDate: new Date().toISOString(),
-        seats: reservation.seatIds,
-        total: reservation.total,
-        status: 'paid',
-    };
+    return getMockPayReservation(reservation, eventTitle);
 }

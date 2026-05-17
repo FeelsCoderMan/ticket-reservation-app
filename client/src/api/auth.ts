@@ -1,5 +1,6 @@
 import { apiClient, isLiveApiEnabled } from './client';
 import type { User } from './types';
+import { getMockLogin, getMockRegister } from './mock/auth';
 
 export async function login(email: string, password: string): Promise<User> {
     if (isLiveApiEnabled('auth')) {
@@ -7,21 +8,20 @@ export async function login(email: string, password: string): Promise<User> {
         return data;
     }
 
-    return {
-        id: 'usr-dev',
-        name: email.includes('admin') ? 'Admin User' : 'Demo User',
-        email,
-        role: email.includes('admin') ? 'admin' : 'customer',
-    };
+    return getMockLogin(email);
 }
 
 export async function register(name: string, email: string, password: string): Promise<User> {
     if (isLiveApiEnabled('auth')) {
-        const { data } = await apiClient.post<User>('/auth/register', { name, email, password });
+        const { data } = await apiClient.post<User>('/auth/register', {
+            name,
+            email,
+            password,
+        });
         return data;
     }
 
-    return { id: 'usr-new', name, email, role: 'customer' };
+    return getMockRegister(name, email);
 }
 
 export async function logout(): Promise<void> {
