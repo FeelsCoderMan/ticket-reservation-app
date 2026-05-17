@@ -2,6 +2,22 @@ export type ApiMode = 'mock' | 'live';
 export type ServiceType = 'auth' | 'events' | 'reservations' | 'payments';
 export type ServiceModes = Record<ServiceType, ApiMode>;
 
+export interface ApiErrorBody {
+    message?: string;
+    code?: string;
+    errors?: Record<string, string[]>;
+    [key: string]: unknown;
+}
+
+export interface NormalizedError<E = ApiErrorBody> {
+    isAxiosError: boolean;
+    status: number | null;
+    data: E | null;
+    message: string;
+    isTimedOut: boolean;
+    isCanceled: boolean;
+}
+
 export interface TicketCategory {
     id: string;
     name: string;
