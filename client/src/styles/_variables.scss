@@ -1,0 +1,13 @@
+@use './functions' as *;
+
+$color-text: #17202a;
+$color-surface: #ffffff;
+$color-page: #f5f7fb;
+$color-border: #dde4ee;
+$color-muted: #5b6d80;
+$color-primary: #0b5cad;
+$color-primary-soft: #edf4ff;
+$color-dark: #192a3d;
+$radius: rem-calc(8px);
+$content-width: rem-calc(1180px);
+$mobile-breakpoint: rem-calc(880px);

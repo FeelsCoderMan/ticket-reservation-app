@@ -1,0 +1,132 @@
+@use './variables' as *;
+@use './functions' as *;
+
+.button,
+.icon-button {
+    align-items: center;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+}
+
+.button {
+    background: $color-primary;
+    border-radius: $radius;
+    color: $color-surface;
+    font-weight: 800;
+    gap: rem-calc(8px);
+    justify-content: center;
+    min-height: rem-calc(42px);
+    padding: rem-calc(10px) rem-calc(16px);
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+    }
+
+    &.secondary {
+        background: #eef2f7;
+        color: #24364a;
+    }
+
+    &.wide {
+        width: 100%;
+    }
+}
+
+.icon-button {
+    background: #eef2f7;
+    border-radius: $radius;
+    color: #31465c;
+    height: rem-calc(38px);
+    justify-content: center;
+    width: rem-calc(38px);
+}
+
+.eyebrow {
+    color: $color-primary;
+    font-size: rem-calc(13px);
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0 0 rem-calc(8px);
+    text-transform: uppercase;
+}
+
+.status {
+    background: #e9f7f1;
+    border: 1px solid #bfe6d1;
+    border-radius: 999px;
+    color: #17643b;
+    font-size: rem-calc(13px);
+    font-weight: 700;
+    padding: rem-calc(5px) rem-calc(10px);
+    text-transform: capitalize;
+}
+
+.search-box {
+    align-items: center;
+    background: $color-surface;
+    border: 1px solid #d7e0ea;
+    border-radius: $radius;
+    display: flex;
+    gap: rem-calc(10px);
+    min-height: rem-calc(46px);
+    padding: 0 rem-calc(14px);
+
+    input {
+        border: 0;
+        min-width: 0;
+        outline: 0;
+        width: 100%;
+    }
+}
+
+.event-card,
+.summary-panel,
+.control-panel,
+.table-panel,
+.auth-form,
+.seat-shell {
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius;
+}
+
+.summary-panel,
+.control-panel,
+.auth-form,
+.table-panel {
+    padding: rem-calc(22px);
+}
+
+.summary-panel,
+.control-panel,
+.auth-form,
+.details-content {
+    align-self: start;
+    display: grid;
+    gap: rem-calc(18px);
+}
+
+.segmented {
+    background: #eef2f7;
+    border-radius: $radius;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: rem-calc(360px);
+    padding: rem-calc(4px);
+
+    button {
+        background: transparent;
+        border: 0;
+        border-radius: rem-calc(7px);
+        cursor: pointer;
+        font-weight: 800;
+        min-height: rem-calc(40px);
+
+        &.active {
+            background: $color-surface;
+            color: $color-primary;
+        }
+    }
+}

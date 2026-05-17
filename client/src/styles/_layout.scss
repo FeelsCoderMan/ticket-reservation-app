@@ -1,0 +1,89 @@
+@use './variables' as *;
+@use './functions' as *;
+
+.topbar {
+    align-items: center;
+    background: $color-surface;
+    border-bottom: 1px solid $color-border;
+    display: grid;
+    gap: rem-calc(18px);
+    grid-template-columns: 1fr auto 1fr;
+    min-height: rem-calc(72px);
+    padding: 0 rem-calc(28px);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.brand,
+.nav,
+.account,
+.nav a {
+    align-items: center;
+    display: flex;
+}
+
+.brand {
+    color: #102033;
+    font-weight: 800;
+    gap: rem-calc(10px);
+}
+
+.nav {
+    gap: rem-calc(8px);
+
+    a {
+        border-radius: $radius;
+        color: #4b5c70;
+        gap: rem-calc(7px);
+        padding: rem-calc(9px) rem-calc(12px);
+
+        &.router-link-active {
+            background: $color-primary-soft;
+            color: $color-primary;
+        }
+    }
+}
+
+.account {
+    gap: rem-calc(10px);
+    justify-content: flex-end;
+}
+
+.page-header,
+.details-layout,
+.checkout,
+.dashboard {
+    display: grid;
+    gap: rem-calc(28px);
+}
+
+.page-header {
+    align-items: end;
+    grid-template-columns: 1fr minmax(rem-calc(260px), rem-calc(360px));
+    margin-bottom: rem-calc(28px);
+
+    &.compact {
+        align-items: center;
+        grid-template-columns: 1fr auto;
+    }
+}
+
+@media (max-width: $mobile-breakpoint) {
+    .topbar,
+    .page-header,
+    .page-header.compact,
+    .details-layout,
+    .checkout {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        justify-items: start;
+        padding: rem-calc(18px);
+    }
+
+    .account {
+        justify-content: flex-start;
+    }
+}
