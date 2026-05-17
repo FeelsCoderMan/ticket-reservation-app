@@ -177,6 +177,21 @@
     grid-template-columns: 1.4fr 1fr auto auto;
 }
 
+.not-found {
+    align-items: start;
+    display: grid;
+    gap: rem-calc(18px);
+    justify-items: start;
+    margin: rem-calc(96px) auto 0;
+    max-width: rem-calc(560px);
+    text-align: left;
+
+    p:not(.eyebrow) {
+        color: $color-muted;
+        font-size: rem-calc(18px);
+    }
+}
+
 @media (max-width: $mobile-breakpoint) {
     .event-grid {
         grid-template-columns: 1fr;

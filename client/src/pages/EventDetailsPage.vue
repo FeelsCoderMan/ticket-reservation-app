@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { Calendar, MapPin } from '@lucide/vue';
 import { useEventsStore } from '@/stores/events';
+import NotFoundPage from './NotFoundPage.vue';
 
 const route = useRoute();
 const eventsStore = useEventsStore();
 const eventId = computed(() => String(route.params.id));
+const loaded = ref(false);
 
-onMounted(() => eventsStore.loadEvent(eventId.value));
+onMounted(async () => {
+    await eventsStore.loadEvent(eventId.value);
+    loaded.value = true;
+});
 </script>
 
 <template>
@@ -33,4 +38,5 @@ onMounted(() => eventsStore.loadEvent(eventId.value));
             <RouterLink class="button wide" :to="`/events/${eventId}/seats`">Select seats</RouterLink>
         </div>
     </section>
+    <NotFoundPage v-else-if="loaded" />
 </template>

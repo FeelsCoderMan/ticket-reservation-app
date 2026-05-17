@@ -5,6 +5,7 @@ import CheckoutPage from '@/pages/CheckoutPage.vue';
 import EventDetailsPage from '@/pages/EventDetailsPage.vue';
 import EventsPage from '@/pages/EventsPage.vue';
 import LoginPage from '@/pages/LoginPage.vue';
+import NotFoundPage from '@/pages/NotFoundPage.vue';
 import OrdersPage from '@/pages/OrdersPage.vue';
 import RegisterPage from '@/pages/RegisterPage.vue';
 import SeatSelectionPage from '@/pages/SeatSelectionPage.vue';
@@ -21,6 +22,7 @@ const router = createRouter({
         { path: '/checkout', component: CheckoutPage },
         { path: '/orders', component: OrdersPage },
         { path: '/admin', component: AdminDashboardPage, meta: { requiresAdmin: true } },
+        { path: '/:pathMatch(.*)*', component: NotFoundPage },
     ],
 });
 
